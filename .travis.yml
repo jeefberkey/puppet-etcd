@@ -1,6 +1,10 @@
 ---
 language: ruby
-script: "bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'"
+sudo: false
+script:
+  - bundle exec rake validate
+  - bundle exec rake lint
+  - bundle exec rake spec SPEC_OPTS='--format documentation'
 bundler_args: --without development
 matrix:
   fast_finish: true
@@ -11,4 +15,5 @@ matrix:
       env: PUPPET_VERSION=4.0
     - rvm: 2.3.0
       env: PUPPET_VERSION=4.4
-sudo: false
+    - rvm: 2.3.0
+      env: PUPPET_VERSION=5.3
